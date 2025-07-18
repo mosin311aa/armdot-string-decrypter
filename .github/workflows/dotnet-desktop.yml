@@ -1,0 +1,31 @@
+name: Build .NET Framework 4.7 and Upload Artifact
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup MSBuild path
+        uses: microsoft/setup-msbuild@v2
+
+      - name: Restore NuGet packages
+        run: nuget restore ArmDot.csproj
+
+      - name: Build solution
+        run: msbuild ArmDot.csproj /p:Configuration=Release
+
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: net47-build
+          path: |
+            **\bin\Release\
