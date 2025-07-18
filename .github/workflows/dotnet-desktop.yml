@@ -14,6 +14,9 @@ jobs:
       - name: Setup MSBuild path
         uses: microsoft/setup-msbuild@v2
 
+      - name: dnlib
+        run: nuget install dnlib -Version 3.5.0 -OutputDirectory packages 
+
       - name: Build solution
         run: msbuild ArmDot.csproj /p:Configuration=Release
 
