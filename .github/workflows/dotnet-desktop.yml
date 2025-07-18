@@ -14,9 +14,6 @@ jobs:
       - name: Setup MSBuild path
         uses: microsoft/setup-msbuild@v2
 
-      - name: Restore NuGet packages
-        run: nuget restore ArmDot.csproj
-
       - name: Build solution
         run: msbuild ArmDot.csproj /p:Configuration=Release
 
