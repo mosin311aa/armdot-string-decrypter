@@ -17,8 +17,9 @@ jobs:
       - name: Download nuget.exe
         run: curl -L -o nuget.exe https://dist.nuget.org/win-x86-commandline/latest/nuget.exe
 
-      - name: Restore NuGet packages (via packages.config)
-        run: ./nuget.exe restore ArmDot.csproj
+      - name: Restore NuGet packages
+        run: ./nuget.exe restore ArmDot.csproj -PackagesDirectory packages
+
 
       - name: Build solution
         run: msbuild ArmDot.csproj /p:Configuration=Release
