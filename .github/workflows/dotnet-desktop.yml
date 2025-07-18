@@ -1,10 +1,7 @@
 name: Build .NET Framework 4.7 and Upload Artifact
 
 on:
-  push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
+  workflow_dispatch:
 
 jobs:
   build:
